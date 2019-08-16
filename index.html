@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>jQuery拖拽拉伸缩放插件l_zoom_plus</title>
+        <link rel="stylesheet" href="css/l_zoom.css">
+    </head>
+    <body id = "mybody">
+        <style>
+            html, body {
+      		  width: 100%;
+      		  height: 100%;
+      		  background-color: gainsboro;
+      			-moz-user-select:none; /*火狐*/
+      	    -webkit-user-select:none; /*webkit浏览器*/
+      	    -ms-user-select:none; /*IE10*/
+      	    -khtml-user-select:none; /*早期浏览器*/
+      	    user-select:none;
+      		}
+          body{
+            transform-origin: 0 0;
+            transform: scale(1);
+          }
+            * {
+                padding: 0;
+                margin: 0;
+            }
+
+            .sll {
+                width: 200px;
+                height: 100px;
+                background-color: red;
+            }
+      			.test1{
+      				position: absolute;
+      				top: 200px;
+      				left: 0;
+      			}
+            .test2{
+      				position: absolute;
+      				top: 400px;
+      				left: 0;
+      				width: 200px;
+      				height: 100px;
+      			}
+        </style>
+              <div id="test1" class="sll test1" style="background-color: white;"></div>
+              <div id="test2" class="skk test2" style="background-color: yellow;"></div>
+              <div onclick="undrag()">点击我禁止黄色方块移动</div>
+              <div onclick="drag()">点击我允许黄色移动</div>
+        <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script src="js/l_zoom.min.js"></script>
+        <script src="js/l_drag.min.js"></script>
+        <script>
+            function undrag(){
+              console.log(1);
+              $('.skk').l_drag(false);
+            }
+            function drag(){
+              console.log(2);
+              $('.skk').l_drag(true,1);
+            }
+            $('.sll').l_zoom(10,1).l_drag(true,1);
+            $('.skk').l_zoom(10,1).l_drag(true,1);
+
+			//jquery对象点出l_zoom方法即可转换成可缩放元素,配置信息： 等比缩放:auto  自由缩放:free
+
+
+            // new    2019.4.2
+            //new  jquery对象点出l_drag方法即可转换成可拖拽元素,
+            //仿jquery,经典链式编程只要在后面点出来即可调用转化成你想要的元素
+        </script>
+    </body>
+</html>
